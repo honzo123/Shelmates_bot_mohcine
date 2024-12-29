@@ -1,4 +1,4 @@
 {
-  "TOKEN": "<your-bot-token>",
+  "TOKEN":     "<your-bot-token>",
   "CLIENT_ID": "<your-bot-client-id>"
 }
