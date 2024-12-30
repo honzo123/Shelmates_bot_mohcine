@@ -2,6 +2,7 @@ import { Client, Collection, REST, Routes } from 'discord.js';
 import fs from 'fs/promises';
 import path from 'path';
 import config from './config';
+import { connectToDatabase } from './db';
 
 export default class Bot {
     public commands = new Collection<string, any>();
@@ -14,8 +15,9 @@ export default class Bot {
         this.client.on('warn', console.log);
         this.client.on('error', console.error);
         this.client.once("ready", async () => {
-            console.log(`Ready! Logged in as ${client.user!.tag}`);
+            console.log(`Logged in as ${client.user!.tag} !`);
 
+            await connectToDatabase("shellmeets");
             await this.importEvents();
             await this.importSlashCommands();
             await this.registerCommand();
@@ -58,7 +60,7 @@ export default class Bot {
             const currentCommand = command.default;
 
             this.commands.set(currentCommand.data.name, currentCommand);
-            console.log(`Loaded command ${currentCommand.data.name}`);
+            console.log(`Loaded command ${currentCommand.data.name}.`);
 
             const commandData = currentCommand.data.toJSON();
             this.commandsArray.push(commandData);
