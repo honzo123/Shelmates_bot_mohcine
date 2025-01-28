@@ -9,18 +9,20 @@ export type ReminderStatus = "Pending" | "Notified" | "Canceled";
 export interface IReminder extends Document {
     // auto generated
     id : string,
-    userId: Schema.Types.ObjectId | IUser, 
-    channelId?: string,            
     createdAt: Date,              
     status?: ReminderStatus,  
+
+    userId: Schema.Types.ObjectId | IUser, 
 
     // required
     title: string,                
     date: Date,               
 
-    // optional
     desc?: string,                
     leadTimeMs?: number,      
+
+    // optional
+    channelId?: string,            
     timezone?: string,            
     type: ReminderType ,
 };
@@ -48,4 +50,3 @@ const ReminderSchema = new mongoose.Schema({
 
 
 export default mongoose.model<IReminder>("Reminder", ReminderSchema);
-

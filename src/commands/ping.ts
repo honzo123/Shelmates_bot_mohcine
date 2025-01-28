@@ -9,6 +9,6 @@ export default {
 
 
   async execute(interaction: CommandInteraction) {
-    await interaction.reply('Pong !');
+    await interaction.reply('Ponghngfhjg !');
   }
 };

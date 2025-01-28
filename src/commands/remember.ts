@@ -10,6 +10,7 @@ export default {
       option.setName("msg")
         .setDescription("msg to remember")
         .setRequired(true)
+        
     ),
 
 

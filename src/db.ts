@@ -5,7 +5,6 @@ let DB : any = null;
 
 async function initDB() {
     if(DB != null) return DB;
-
     const client = new MongoClient(process.env.URI || "", {
         serverApi: {
             version: ServerApiVersion.v1,
