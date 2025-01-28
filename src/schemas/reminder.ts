@@ -12,14 +12,15 @@ export interface IReminder extends Document {
     createdAt: Date,              
     status?: ReminderStatus,  
 
-    userId: Schema.Types.ObjectId | IUser, 
+    userId: string, 
 
     // required
     title: string,                
     date: Date,               
 
-    desc?: string,                
-    leadTimeMs?: number,      
+    description?: string,                
+    leadTimeMs?: number,  
+    meetLink? : string,    
 
     // optional
     channelId?: string,            
@@ -30,7 +31,7 @@ export interface IReminder extends Document {
 const ReminderSchema = new mongoose.Schema({
     // auto generated
     id: String,
-    userId: { type: Schema.Types.ObjectId, ref: "User", require: true, },
+    userId: { type: String,  require: true, },
     channelId: String,
     createdAt: Date,
     status: {type: String, default: "Pending" , enum: ["Pending" , "Notified" , "Canceled"]},
@@ -40,7 +41,8 @@ const ReminderSchema = new mongoose.Schema({
     date: Date,
 
     // optional
-    desc: {type: String, require: false, default: ''},
+    description: {type: String, require: false, default: ''},
+    meetLink: {type: String, require: false, default: ''},
     leadTimeMs: {type: Number, default: 0},
     timezone: { type: String, require: false, default: null },
     type: {type: String, default : "Notification" , enum: ["Meet" , "Event" , "Notification"] },
@@ -50,3 +52,4 @@ const ReminderSchema = new mongoose.Schema({
 
 
 export default mongoose.model<IReminder>("Reminder", ReminderSchema);
+

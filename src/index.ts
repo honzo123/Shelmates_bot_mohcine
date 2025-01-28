@@ -2,13 +2,12 @@ import { Client, GatewayIntentBits, Message } from 'discord.js';
 import Bot from './lib/bot';
 import dotenv from "dotenv";
 import initDB from './db';
-import scheduleCommand from './commands/schedule';
-//import scheduleCommand from './commands/schedule'; // the exoprted function
+import scheduleCommand from './prefixCommands/schedule';
 
 
 
 dotenv.config();
-//initDB();
+initDB();
 
 export const bot = new Bot(
   new Client({
@@ -23,15 +22,14 @@ export const bot = new Bot(
   })
 )
 bot.client.on('messageCreate', async (message: Message) => {
-  // Check if the message starts with !schedule
+  console.log(message.content)
   if (message.content.startsWith('!schedule')) {
-    await scheduleCommand(message); // Call the schedule command
+    await scheduleCommand(message); 
   }
 });
 
-// Log in to Discord with your bot token
 bot.client.login(process.env.TOKEN);
-;
+
 
 
 

@@ -15,8 +15,8 @@ export default {
 
 
   async execute(interaction: CommandInteraction) {
-    const DB = await initDB();
-    DB.insertOne({"msg" : interaction.options.get("msg")!.value});
+    // const DB = await initDB();
+    // DB.insertOne({"msg" : interaction.options.get("msg")!.value});
     await interaction.reply('YOUR DATA IS MY DATA!');
   }
 };

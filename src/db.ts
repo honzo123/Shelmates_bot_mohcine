@@ -1,27 +1,19 @@
 import { MongoClient, ServerApiVersion } from "mongodb";
+import mongoose from "mongoose";
 
 
-let DB : any = null;
+let DB: any = null;
+
+
+
 
 async function initDB() {
-    if(DB != null) return DB;
-    const client = new MongoClient(process.env.URI || "", {
-        serverApi: {
-            version: ServerApiVersion.v1,
-            strict: true,
-            deprecationErrors: true,
-        }
-    });
-    
+    if (DB != null) return DB;
+    console.log("[INFO] Connecting to DB");
+    DB = await mongoose.connect(process.env.URI as string,{dbName: "ShellMatesBot"});
+    console.log("[INFO] Connected to DB");
+    return DB;
 
-    try {
-        DB =  (await client.connect()).db("ChillMatesDB").collection("DB");
-        console.log("[INFO] DB loaded.");
-        return DB;
-    } catch(e) {
-        console.error("Failed to init db");
-        await client.close();
-    }
 }
 
 
