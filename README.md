@@ -1,5 +1,5 @@
-# ChillMates Bot
-a pretty chill bot for a pretty chill club
+# Shelmates meetings schedul bot
+helper functions for parsing time and converting timezone
 
 
 ### Cmds:
@@ -9,3 +9,7 @@ a pretty chill bot for a pretty chill club
 - `/calender type?`
     - type: day/month
 - `/cancel id!`
+
+
+
+credit to @t-88
