@@ -1,4 +1,6 @@
 {
-  "TOKEN": "<your-bot-token>",
-  "CLIENT_ID": "<your-bot-client-id>"
+  "TOKEN": "your token here",
+  "CLIENT_ID": "your client id here",
+  "MONGODB_URI": "your mongodb uri here",
+  "GOOGLE_CALENDAR_ID": "your google calendar id here"
 }

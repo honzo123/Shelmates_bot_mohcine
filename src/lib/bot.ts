@@ -27,7 +27,7 @@ export default class Bot {
     private async importEvents() {
         const eventsDir = path.join(__dirname, '../events')
 
-        let eventFiles = await fs.readdir(eventsDir);
+        const eventFiles = await fs.readdir(eventsDir);
         eventFiles.filter(file => !file.endsWith('.map'));
 
         for (const file of eventFiles) {
@@ -36,22 +36,21 @@ export default class Bot {
 
             const currentEvent = event.default;
 
-            if (currentEvent.once) {
+            if (currentEvent.once)
                 this.client.once(currentEvent.name, (...args) =>
                     currentEvent.execute(...args)
                 );
-            } else {
+            else
                 this.client.on(currentEvent.name, (...args) =>
                     currentEvent.execute(...args)
                 );
-            }
         }
     }
 
     private async importSlashCommands() {
         const commandsDir = path.join(__dirname, '../commands')
 
-        let commandFiles = await fs.readdir(commandsDir);
+        const commandFiles = await fs.readdir(commandsDir);
         commandFiles.filter(file => !file.endsWith('.map'));
 
         for (const file of commandFiles) {

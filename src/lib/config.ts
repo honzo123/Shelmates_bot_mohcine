@@ -7,6 +7,7 @@ const configSchema = z.object({
     TOKEN: z.string(),
     CLIENT_ID: z.string(),
     MONGODB_URI: z.string(),
+    GOOGLE_CALENDAR_ID: z.string(),
 })
 
 const config = configSchema.parse(configFile)
